@@ -1,36 +1,54 @@
 ---
-# Change 192.168.1.55 to your server's IP address if different
+# Change 192.168.1.55 to your server's IP address if different.
 
-- Docker Management:
+- Control Room:
     - Portainer:
         href: http://192.168.1.55:9000
-        description: Docker container manager
+        description: Container command center
         icon: portainer.png
         ping: http://192.168.1.55:9000
+    - Docker Host:
+        href: http://192.168.1.55:3000
+        description: Homepage and server launch page
+        icon: docker.png
+        ping: http://192.168.1.55:3000
 
-- Network & VPN:
+- Network & Access:
     - WireGuard:
         href: http://192.168.1.55:51821
-        description: VPN dashboard
+        description: VPN access and tunnel status
         icon: wireguard.png
         ping: http://192.168.1.55:51821
 
-- Files & Storage:
+- Files & Projects:
     - File Browser:
         href: http://192.168.1.55:8080
-        description: Server file manager
+        description: Browse files and storage
         icon: filebrowser.png
         ping: http://192.168.1.55:8080
+    - GitHub Projects:
+        href: https://github.com/Shaneeen
+        description: Code, configs, and homelab repos
+        icon: github.png
 
-- Monitoring:
+- Health Checks:
     - Uptime Kuma:
         href: http://192.168.1.55:3001
-        description: Service uptime monitor
+        description: Uptime, incidents, and alerts
         icon: uptime-kuma.png
         ping: http://192.168.1.55:3001
+    - Server Status:
+        href: http://192.168.1.55:3000
+        description: CPU, memory, disk, and quick search
+        icon: mdi-server
+        ping: http://192.168.1.55:3000
 
-- Development:
-    - GitHub:
-        href: https://github.com/Shaneeen
-        description: lanceenbox repositories
-        icon: github.png
+- Launch Pad:
+    - Future App:
+        href: "#"
+        description: Reserved for the next self-hosted thing
+        icon: mdi-plus-circle-outline
+    - Notes & Docs:
+        href: https://gethomepage.dev
+        description: Homepage config reference
+        icon: homepage.png

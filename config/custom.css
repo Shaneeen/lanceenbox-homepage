@@ -1,170 +1,304 @@
-/* ================================================
-   lanceenbox — Matcha × Strawberry Dark Theme
-   ================================================
-   Palette:
-     Matcha  →  muted sage green  #7a9e67 / #9ec284
-     Strawberry → warm pink-red   #c9576a / #e08090
-     Background  → dark charcoal  #1c1c1c
-     Cards       → #242424 / #2c2c2c
-   ================================================ */
+/* lanceenbox - matcha strawberry dark dashboard */
 
 :root {
-  --matcha:            #7a9e67;
-  --matcha-light:      #9ec284;
-  --matcha-glow:       rgba(122, 158, 103, 0.18);
-  --strawberry:        #c9576a;
-  --strawberry-light:  #e08090;
-  --strawberry-glow:   rgba(201, 87, 106, 0.15);
-  --bg:                #1c1c1c;
-  --bg-card:           #242424;
-  --bg-card-hover:     #2c2c2c;
-  --border:            #2e2e2e;
-  --border-hover:      #3a3a3a;
-  --text:              #e2d6c8;
-  --text-muted:        #8a7e74;
+  --lb-ink: #11120e;
+  --lb-panel: rgba(21, 22, 18, 0.84);
+  --lb-panel-strong: rgba(31, 33, 27, 0.92);
+  --lb-line: rgba(241, 232, 193, 0.14);
+  --lb-line-hot: rgba(224, 229, 162, 0.42);
+  --lb-text: #f1e8c1;
+  --lb-muted: #c596a6;
+  --lb-matcha: #a2ad61;
+  --lb-matcha-bright: #e0e5a2;
+  --lb-strawberry: #d1799b;
+  --lb-strawberry-deep: #bd5d5e;
+  --lb-blush: #e9c9d4;
+  --lb-shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
 }
 
-/* ── Page background ──────────────────────────── */
 html,
+body,
+#__next {
+  min-height: 100%;
+}
+
 body {
-  background-color: var(--bg) !important;
-  /* subtle dual-tone glow in corners for depth */
+  color: var(--lb-text) !important;
+  background:
+    linear-gradient(90deg, rgba(17, 18, 14, 0.96), rgba(17, 18, 14, 0.82) 58%, rgba(241, 232, 193, 0.16)),
+    radial-gradient(circle at 12% 8%, rgba(224, 229, 162, 0.18), transparent 30%),
+    radial-gradient(circle at 78% 18%, rgba(209, 121, 155, 0.18), transparent 34%),
+    radial-gradient(circle at 55% 92%, rgba(162, 173, 97, 0.13), transparent 38%),
+    #11120e !important;
+  background-attachment: fixed !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
   background-image:
-    radial-gradient(circle at 15% 15%, rgba(122, 158, 103, 0.04) 0%, transparent 55%),
-    radial-gradient(circle at 85% 85%, rgba(201, 87, 106, 0.04) 0%, transparent 55%) !important;
+    linear-gradient(rgba(241, 232, 193, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 232, 193, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 78%);
+  z-index: 0;
 }
 
-/* ── Custom scrollbar ─────────────────────────── */
-::-webkit-scrollbar        { width: 5px; }
-::-webkit-scrollbar-track  { background: var(--bg); }
-::-webkit-scrollbar-thumb  { background: #383838; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--matcha); }
+body::after {
+  content: "lanceenbox";
+  position: fixed;
+  right: clamp(18px, 5vw, 72px);
+  top: clamp(18px, 5vw, 54px);
+  z-index: 0;
+  color: rgba(224, 229, 162, 0.08);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.2rem, 13vw, 10rem);
+  font-style: italic;
+  line-height: 0.9;
+  pointer-events: none;
+  white-space: nowrap;
+}
 
-/* ── Text selection ───────────────────────────── */
+body > div,
+#__next,
+main {
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #11120e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--lb-matcha), var(--lb-strawberry));
+  border: 3px solid #11120e;
+  border-radius: 999px;
+}
+
 ::selection {
-  background-color: var(--strawberry);
-  color: #fff;
+  background: var(--lb-strawberry);
+  color: #11120e;
 }
 
-/* ── Site title ───────────────────────────────── */
-/* gradient text: matcha → strawberry */
 #site-title,
 [class*="site-title"],
 header h1 {
-  background: linear-gradient(135deg, var(--matcha-light) 0%, var(--strawberry-light) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  font-weight: 700 !important;
+  color: var(--lb-text) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: clamp(2.2rem, 7vw, 5.8rem) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  line-height: 0.95 !important;
+  text-shadow: 0 0 22px rgba(209, 121, 155, 0.18);
 }
 
-/* ── Service group headings ───────────────────── */
-h2 {
-  color: var(--strawberry-light) !important;
-  font-size: 0.68rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
+#site-title::first-letter,
+header h1::first-letter {
+  color: var(--lb-strawberry) !important;
+}
+
+header,
+[class*="header"] {
+  backdrop-filter: blur(18px);
+}
+
+h2,
+[class*="service-group"] h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--lb-matcha-bright) !important;
+  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
-  /* override any transparent/white-opacity color */
-  -webkit-text-fill-color: var(--strawberry-light) !important;
+  -webkit-text-fill-color: var(--lb-matcha-bright) !important;
 }
 
-/* ── Service cards ────────────────────────────── */
+h2::before {
+  content: "";
+  width: 0.72rem;
+  height: 0.72rem;
+  display: inline-block;
+  background: var(--lb-strawberry);
+  clip-path: polygon(50% 0, 61% 34%, 97% 20%, 76% 50%, 97% 80%, 61% 66%, 50% 100%, 39% 66%, 3% 80%, 24% 50%, 3% 20%, 39% 34%);
+  filter: drop-shadow(0 0 8px rgba(209, 121, 155, 0.45));
+}
+
+#information-widgets,
+#information-widgets > *,
+#search,
+#bookmarks,
+#services {
+  position: relative;
+}
+
+#information-widgets > *,
+#search > *,
+#bookmarks li a,
+#services li a,
+#services a {
+  background:
+    linear-gradient(145deg, rgba(31, 33, 27, 0.92), rgba(19, 20, 16, 0.86)) !important;
+  border: 1px solid var(--lb-line) !important;
+  border-radius: 8px !important;
+  box-shadow: var(--lb-shadow) !important;
+  color: var(--lb-text) !important;
+}
+
 #services li a,
 #services a {
   position: relative !important;
+  isolation: isolate;
+  min-height: 98px;
   overflow: hidden !important;
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 14px !important;
-  transition:
-    border-color  0.22s ease,
-    box-shadow    0.22s ease,
-    transform     0.15s ease,
-    background-color 0.22s ease !important;
+  transition: transform 160ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease !important;
 }
 
-/* left accent bar — hidden by default */
 #services li a::before,
 #services a::before {
-  content: '';
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--matcha), var(--strawberry));
-  border-radius: 14px 0 0 14px;
-  opacity: 0;
-  transition: opacity 0.22s ease;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--lb-strawberry), var(--lb-matcha-bright));
+  opacity: 0.95;
+  z-index: -1;
 }
 
-/* card hover state */
+#services li a::after,
+#services a::after {
+  content: "open";
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  color: rgba(17, 18, 14, 0.9);
+  background: var(--lb-matcha-bright);
+  border: 1px solid rgba(241, 232, 193, 0.18);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
 #services li a:hover,
 #services a:hover {
-  background-color: var(--bg-card-hover) !important;
-  border-color: var(--matcha) !important;
+  background:
+    linear-gradient(145deg, rgba(45, 48, 38, 0.94), rgba(25, 26, 21, 0.92)) !important;
+  border-color: var(--lb-line-hot) !important;
   box-shadow:
-    0 0 0 1px var(--matcha),
-    0 8px 24px var(--matcha-glow) !important;
-  transform: translateY(-2px) !important;
+    0 0 0 1px rgba(224, 229, 162, 0.16),
+    0 18px 46px rgba(0, 0, 0, 0.42),
+    0 0 34px rgba(209, 121, 155, 0.14) !important;
+  transform: translateY(-3px) !important;
 }
 
-/* reveal left accent bar on hover */
-#services li a:hover::before,
-#services a:hover::before {
+#services li a:hover::after,
+#services a:hover::after {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* ── Info / resource widgets (CPU, RAM, disk) ─── */
+#services img,
+#services svg {
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.3));
+}
+
+#services p,
+#bookmarks p,
+[class*="description"] {
+  color: rgba(233, 201, 212, 0.82) !important;
+}
+
 #information-widgets > * {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 12px !important;
+  border-color: rgba(162, 173, 97, 0.24) !important;
 }
 
-/* ── Search bar ───────────────────────────────── */
+#information-widgets [class*="text"],
+#information-widgets span {
+  color: var(--lb-text) !important;
+}
+
 input[type="search"],
 input[type="text"] {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 10px !important;
-  color: var(--text) !important;
-  caret-color: var(--matcha-light) !important;
+  background: rgba(17, 18, 14, 0.82) !important;
+  border: 1px solid rgba(233, 201, 212, 0.22) !important;
+  border-radius: 999px !important;
+  color: var(--lb-text) !important;
+  caret-color: var(--lb-matcha-bright) !important;
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.28) !important;
 }
 
 input[type="search"]:focus,
 input[type="text"]:focus {
-  border-color: var(--matcha) !important;
-  box-shadow: 0 0 0 2px var(--matcha-glow) !important;
+  border-color: var(--lb-strawberry) !important;
+  box-shadow:
+    0 0 0 3px rgba(209, 121, 155, 0.16),
+    0 14px 44px rgba(0, 0, 0, 0.28) !important;
   outline: none !important;
 }
 
 input::placeholder {
-  color: var(--text-muted) !important;
+  color: rgba(197, 150, 166, 0.72) !important;
 }
 
-/* ── Status / ping indicators ─────────────────── */
+#bookmarks li a {
+  transition: transform 160ms ease, border-color 180ms ease, box-shadow 180ms ease !important;
+}
+
+#bookmarks li a:hover {
+  border-color: rgba(209, 121, 155, 0.5) !important;
+  box-shadow:
+    0 0 0 1px rgba(209, 121, 155, 0.12),
+    0 16px 40px rgba(0, 0, 0, 0.34) !important;
+  transform: translateY(-2px);
+}
+
 [class*="bg-emerald"],
 [class*="bg-green"] {
-  background-color: var(--matcha-light) !important;
+  background-color: var(--lb-matcha-bright) !important;
+  box-shadow: 0 0 12px rgba(224, 229, 162, 0.6);
 }
 
 [class*="bg-red"],
 [class*="bg-rose"] {
-  background-color: var(--strawberry) !important;
+  background-color: var(--lb-strawberry-deep) !important;
+  box-shadow: 0 0 12px rgba(189, 93, 94, 0.6);
 }
 
-/* ── Bookmark cards ───────────────────────────── */
-#bookmarks li a {
-  background-color: var(--bg-card) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 10px !important;
-  color: var(--text) !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+[class*="progress"],
+[role="progressbar"] {
+  accent-color: var(--lb-matcha-bright);
 }
 
-#bookmarks li a:hover {
-  border-color: var(--strawberry) !important;
-  box-shadow: 0 4px 16px var(--strawberry-glow) !important;
+@media (max-width: 720px) {
+  body::after {
+    top: 16px;
+    right: 14px;
+    font-size: 3.4rem;
+  }
+
+  #services li a,
+  #services a {
+    min-height: 86px;
+  }
+
+  #services li a::after,
+  #services a::after {
+    opacity: 1;
+    transform: none;
+  }
 }

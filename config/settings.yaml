@@ -1,22 +1,28 @@
 ---
 title: lanceenbox
-description: lanceenbox · server dashboard
+description: matcha strawberry server dashboard
 theme: dark
-color: zinc
+color: rose
+headerStyle: boxed
+hideVersion: true
+iconStyle: theme
+statusStyle: dot
+target: _blank
+useEqualHeights: true
 
 layout:
-  Docker Management:
+  Control Room:
     style: row
-    columns: 3
-  Network & VPN:
+    columns: 4
+  Network & Access:
     style: row
-    columns: 2
-  Files & Storage:
+    columns: 4
+  Files & Projects:
     style: row
-    columns: 2
-  Monitoring:
+    columns: 4
+  Health Checks:
     style: row
-    columns: 3
-  Development:
+    columns: 4
+  Launch Pad:
     style: row
-    columns: 2
+    columns: 4

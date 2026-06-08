@@ -2,6 +2,12 @@
 # For configuration options and examples, please see:
 # https://gethomepage.dev/configs/info-widgets/
 
+- datetime:
+    text_size: xl
+    format:
+      dateStyle: long
+      timeStyle: short
+
 - resources:
     cpu: true
     memory: true
