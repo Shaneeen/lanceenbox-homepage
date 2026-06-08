@@ -1,7 +1,22 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/settings/
+title: lanceenbox
+description: lanceenbox · server dashboard
+theme: dark
+color: zinc
 
-providers:
-  openweathermap: openweathermapapikey
-  weatherapi: weatherapiapikey
+layout:
+  Docker Management:
+    style: row
+    columns: 3
+  Network & VPN:
+    style: row
+    columns: 2
+  Files & Storage:
+    style: row
+    columns: 2
+  Monitoring:
+    style: row
+    columns: 3
+  Development:
+    style: row
+    columns: 2

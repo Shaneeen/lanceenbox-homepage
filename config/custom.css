@@ -1,0 +1,170 @@
+/* ================================================
+   lanceenbox — Matcha × Strawberry Dark Theme
+   ================================================
+   Palette:
+     Matcha  →  muted sage green  #7a9e67 / #9ec284
+     Strawberry → warm pink-red   #c9576a / #e08090
+     Background  → dark charcoal  #1c1c1c
+     Cards       → #242424 / #2c2c2c
+   ================================================ */
+
+:root {
+  --matcha:            #7a9e67;
+  --matcha-light:      #9ec284;
+  --matcha-glow:       rgba(122, 158, 103, 0.18);
+  --strawberry:        #c9576a;
+  --strawberry-light:  #e08090;
+  --strawberry-glow:   rgba(201, 87, 106, 0.15);
+  --bg:                #1c1c1c;
+  --bg-card:           #242424;
+  --bg-card-hover:     #2c2c2c;
+  --border:            #2e2e2e;
+  --border-hover:      #3a3a3a;
+  --text:              #e2d6c8;
+  --text-muted:        #8a7e74;
+}
+
+/* ── Page background ──────────────────────────── */
+html,
+body {
+  background-color: var(--bg) !important;
+  /* subtle dual-tone glow in corners for depth */
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(122, 158, 103, 0.04) 0%, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(201, 87, 106, 0.04) 0%, transparent 55%) !important;
+}
+
+/* ── Custom scrollbar ─────────────────────────── */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: var(--bg); }
+::-webkit-scrollbar-thumb  { background: #383838; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--matcha); }
+
+/* ── Text selection ───────────────────────────── */
+::selection {
+  background-color: var(--strawberry);
+  color: #fff;
+}
+
+/* ── Site title ───────────────────────────────── */
+/* gradient text: matcha → strawberry */
+#site-title,
+[class*="site-title"],
+header h1 {
+  background: linear-gradient(135deg, var(--matcha-light) 0%, var(--strawberry-light) 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
+}
+
+/* ── Service group headings ───────────────────── */
+h2 {
+  color: var(--strawberry-light) !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  /* override any transparent/white-opacity color */
+  -webkit-text-fill-color: var(--strawberry-light) !important;
+}
+
+/* ── Service cards ────────────────────────────── */
+#services li a,
+#services a {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  transition:
+    border-color  0.22s ease,
+    box-shadow    0.22s ease,
+    transform     0.15s ease,
+    background-color 0.22s ease !important;
+}
+
+/* left accent bar — hidden by default */
+#services li a::before,
+#services a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--matcha), var(--strawberry));
+  border-radius: 14px 0 0 14px;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+/* card hover state */
+#services li a:hover,
+#services a:hover {
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--matcha) !important;
+  box-shadow:
+    0 0 0 1px var(--matcha),
+    0 8px 24px var(--matcha-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* reveal left accent bar on hover */
+#services li a:hover::before,
+#services a:hover::before {
+  opacity: 1;
+}
+
+/* ── Info / resource widgets (CPU, RAM, disk) ─── */
+#information-widgets > * {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+}
+
+/* ── Search bar ───────────────────────────────── */
+input[type="search"],
+input[type="text"] {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  caret-color: var(--matcha-light) !important;
+}
+
+input[type="search"]:focus,
+input[type="text"]:focus {
+  border-color: var(--matcha) !important;
+  box-shadow: 0 0 0 2px var(--matcha-glow) !important;
+  outline: none !important;
+}
+
+input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* ── Status / ping indicators ─────────────────── */
+[class*="bg-emerald"],
+[class*="bg-green"] {
+  background-color: var(--matcha-light) !important;
+}
+
+[class*="bg-red"],
+[class*="bg-rose"] {
+  background-color: var(--strawberry) !important;
+}
+
+/* ── Bookmark cards ───────────────────────────── */
+#bookmarks li a {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#bookmarks li a:hover {
+  border-color: var(--strawberry) !important;
+  box-shadow: 0 4px 16px var(--strawberry-glow) !important;
+}

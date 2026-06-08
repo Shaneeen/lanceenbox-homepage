@@ -1,18 +1,36 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/services/
+# Change 192.168.1.55 to your server's IP address if different
 
-- My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+- Docker Management:
+    - Portainer:
+        href: http://192.168.1.55:9000
+        description: Docker container manager
+        icon: portainer.png
+        ping: http://192.168.1.55:9000
 
-- My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+- Network & VPN:
+    - WireGuard:
+        href: http://192.168.1.55:51821
+        description: VPN dashboard
+        icon: wireguard.png
+        ping: http://192.168.1.55:51821
 
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+- Files & Storage:
+    - File Browser:
+        href: http://192.168.1.55:8080
+        description: Server file manager
+        icon: filebrowser.png
+        ping: http://192.168.1.55:8080
+
+- Monitoring:
+    - Uptime Kuma:
+        href: http://192.168.1.55:3001
+        description: Service uptime monitor
+        icon: uptime-kuma.png
+        ping: http://192.168.1.55:3001
+
+- Development:
+    - GitHub:
+        href: https://github.com/Shaneeen
+        description: lanceenbox repositories
+        icon: github.png

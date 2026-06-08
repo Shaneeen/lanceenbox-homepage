@@ -1,18 +1,19 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/bookmarks
+- Server Tools:
+    - Docker Hub:
+        - abbr: DH
+          href: https://hub.docker.com
+    - gethomepage Docs:
+        - abbr: HP
+          href: https://gethomepage.dev
+    - Ubuntu Packages:
+        - abbr: APT
+          href: https://packages.ubuntu.com
 
 - Developer:
-    - Github:
+    - GitHub:
         - abbr: GH
-          href: https://github.com/
-
-- Social:
-    - Reddit:
-        - abbr: RE
-          href: https://reddit.com/
-
-- Entertainment:
-    - YouTube:
-        - abbr: YT
-          href: https://youtube.com/
+          href: https://github.com/Shaneeen
+    - MDN Web Docs:
+        - abbr: MDN
+          href: https://developer.mozilla.org
