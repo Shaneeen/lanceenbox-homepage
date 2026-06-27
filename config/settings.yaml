@@ -1,8 +1,8 @@
 ---
 title: lanceenbox
-description: matcha strawberry server dashboard
-theme: dark
-color: rose
+description: warm editorial server dashboard
+theme: light
+color: stone
 headerStyle: boxed
 hideVersion: true
 iconStyle: theme

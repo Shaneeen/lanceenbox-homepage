@@ -1,29 +1,29 @@
 ---
-# Change 192.168.1.55 to your server's IP address if different.
+# Replace YOUR_SERVER_IP with your server's IP (e.g. 192.168.1.55 or Tailscale IP)
+# If accessing from the server itself, use localhost.
 
 - Control Room:
     - Portainer:
         href: http://192.168.1.55:9000
-        description: Container command center
+        description: Start, stop, and inspect your containers
         icon: portainer.png
         ping: http://192.168.1.55:9000
     - Docker Host:
         href: http://192.168.1.55:3000
-        description: Homepage and server launch page
+        description: This dashboard — your server's home screen
         icon: docker.png
         ping: http://192.168.1.55:3000
 
 - Network & Access:
-    - WireGuard:
-        href: http://192.168.1.55:51821
-        description: VPN access and tunnel status
-        icon: wireguard.png
-        ping: http://192.168.1.55:51821
+    - Tailscale:
+        href: https://login.tailscale.com/admin/machines
+        description: Mesh VPN and device access
+        icon: tailscale.png
 
 - Files & Projects:
     - File Browser:
         href: http://192.168.1.55:8080
-        description: Browse files and storage
+        description: Browse and manage server files from the web
         icon: filebrowser.png
         ping: http://192.168.1.55:8080
     - GitHub Projects:
@@ -34,7 +34,7 @@
 - Health Checks:
     - Uptime Kuma:
         href: http://192.168.1.55:3001
-        description: Uptime, incidents, and alerts
+        description: Monitor uptime, latency, and get alerts
         icon: uptime-kuma.png
         ping: http://192.168.1.55:3001
     - Server Status:
