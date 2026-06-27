@@ -14,7 +14,6 @@
   --nf-rose: #b15e5c;
   --nf-rose-deep: #9c4b49;
   --nf-rose-soft: #ecd2cd;
-  --nf-pink: #e79aa0;
   --nf-pink-tint: #f3dcd8;
   --nf-green: #5f7d5e;
   --nf-green-pop: #3a9e74;
@@ -22,43 +21,32 @@
   --nf-serif: 'Playfair Display', Georgia, serif;
   --nf-sans: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
   --nf-mono: 'Space Mono', ui-monospace, monospace;
-  --nf-e-1: 0 8px 30px -18px rgba(33, 28, 25, .35), 0 1px 0 rgba(255, 255, 255, .6) inset;
-  --nf-e-2: 0 14px 40px -30px rgba(33, 28, 25, .4);
-  --nf-e-3: 0 26px 50px -20px rgba(33, 28, 25, .4);
 }
 
-html,
-body,
-#__next {
-  min-height: 100%;
+/* ─── base ─── */
+html, body, #__next {
+  min-height: 100% !important;
 }
 
 body {
   font-family: var(--nf-sans) !important;
   color: var(--nf-ink) !important;
   background:
-    radial-gradient(760px 620px at -6% 14%, rgba(231, 154, 160, .22), transparent 58%),
-    radial-gradient(640px 520px at 108% 4%, rgba(95, 125, 94, .12), transparent 56%),
+    radial-gradient(760px 620px at -6% 14%, rgba(231, 154, 160, .18), transparent 58%),
+    radial-gradient(640px 520px at 108% 4%, rgba(95, 125, 94, .10), transparent 56%),
     var(--nf-bg) !important;
   background-attachment: fixed !important;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased !important;
 }
 
-body > div,
-#__next,
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* watermark */
+/* ─── watermark ─── */
 body::after {
   content: "lanceenbox";
   position: fixed;
   right: clamp(18px, 5vw, 72px);
   top: clamp(18px, 5vw, 54px);
   z-index: 0;
-  color: rgba(177, 94, 92, 0.06);
+  color: rgba(177, 94, 92, 0.05);
   font-family: var(--nf-serif);
   font-size: clamp(3.2rem, 13vw, 10rem);
   font-style: italic;
@@ -68,56 +56,53 @@ body::after {
   white-space: nowrap;
 }
 
-/* scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+body > div, #__next, main {
+  position: relative;
+  z-index: 1;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--nf-bg);
-}
-
+/* ─── scrollbar ─── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--nf-bg); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(var(--nf-rose-soft), var(--nf-green-soft));
   border: 3px solid var(--nf-bg);
   border-radius: 999px;
 }
+::selection { background: var(--nf-rose); color: #fff; }
 
-::selection {
-  background: var(--nf-rose);
-  color: #fff;
-}
-
-/* site title — editorial serif */
+/* ─── site title ─── */
 #site-title,
 [class*="site-title"],
-header h1 {
+header h1,
+[class*="Header"] h1 {
   color: var(--nf-ink) !important;
   font-family: var(--nf-serif) !important;
-  font-size: clamp(2.2rem, 7vw, 5.8rem) !important;
+  font-size: clamp(2rem, 6vw, 4.5rem) !important;
   font-style: italic !important;
   font-weight: 700 !important;
-  letter-spacing: 0 !important;
+  letter-spacing: -0.015em !important;
   line-height: 0.95 !important;
 }
 
-#site-title::first-letter,
-header h1::first-letter {
-  color: var(--nf-rose) !important;
-}
-
-/* header */
+/* ─── header bar ─── */
 header,
-[class*="header"] {
-  backdrop-filter: blur(14px);
+[class*="header"],
+[class*="Header"] {
+  backdrop-filter: blur(14px) !important;
+  background: rgba(244, 237, 230, 0.75) !important;
 }
 
-/* section headings — mono eyebrow */
+/* ─── all text everywhere ─── */
+*, *::before, *::after {
+  font-family: var(--nf-sans);
+}
+
+/* ─── section headings (service groups) ─── */
 h2,
-[class*="service-group"] h2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+[class*="service-group"] h2,
+[class*="Service"] h2,
+div[class*="text-theme"] {
   color: var(--nf-muted) !important;
   font-family: var(--nf-mono) !important;
   font-size: 0.68rem !important;
@@ -127,193 +112,291 @@ h2,
   -webkit-text-fill-color: var(--nf-muted) !important;
 }
 
-h2::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  display: inline-block;
-  background: var(--nf-rose);
-  border-radius: 50%;
-  box-shadow: 0 0 8px rgba(177, 94, 92, 0.4);
+h2::before,
+[class*="service-group"] h2::before {
+  content: "" !important;
+  width: 6px !important;
+  height: 6px !important;
+  display: inline-block !important;
+  background: var(--nf-rose) !important;
+  border-radius: 50% !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
+  clip-path: none !important;
+  filter: none !important;
+  box-shadow: 0 0 8px rgba(177, 94, 92, 0.4) !important;
 }
 
-/* widgets, search, bookmarks, services — shared */
-#information-widgets,
-#information-widgets > *,
-#search,
-#bookmarks,
-#services {
-  position: relative;
-}
-
-/* card surfaces — warm paper */
+/* ─── ALL card surfaces ─── */
 #information-widgets > *,
 #search > *,
 #bookmarks li a,
 #services li a,
-#services a {
+#services a,
+[class*="Widget"],
+[class*="widget"],
+div[class*="rounded"],
+div[class*="service"] > a,
+div[class*="Service"] > a,
+[class*="information"] > div {
   background: var(--nf-paper) !important;
   border: 1px solid var(--nf-line) !important;
   border-radius: 18px !important;
-  box-shadow: var(--nf-e-2) !important;
+  box-shadow: 0 14px 40px -30px rgba(33, 28, 25, .35) !important;
   color: var(--nf-ink) !important;
 }
 
-/* service cards */
+/* ─── service cards ─── */
 #services li a,
-#services a {
+#services a,
+div[class*="service"] > a,
+div[class*="Service"] > a {
   position: relative !important;
-  isolation: isolate;
-  min-height: 98px;
+  isolation: isolate !important;
+  min-height: 88px !important;
   overflow: hidden !important;
   transition: transform .22s cubic-bezier(.2, .7, .3, 1),
               border-color .18s,
-              box-shadow .22s !important;
+              box-shadow .22s,
+              background .18s !important;
 }
 
-/* left accent bar — rose gradient */
+/* left accent bar */
 #services li a::before,
-#services a::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--nf-rose), var(--nf-rose-soft));
-  opacity: 0.85;
-  z-index: -1;
-  border-radius: 18px 0 0 18px;
+#services a::before,
+div[class*="service"] > a::before,
+div[class*="Service"] > a::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: linear-gradient(180deg, var(--nf-rose), var(--nf-rose-soft)) !important;
+  opacity: 0.85 !important;
+  z-index: 0 !important;
+  border-radius: 18px 0 0 18px !important;
+  clip-path: none !important;
+  filter: none !important;
 }
 
-/* "open" pill on hover */
+/* hover "open" pill */
 #services li a::after,
-#services a::after {
-  content: "open";
-  position: absolute;
-  right: 14px;
-  bottom: 12px;
-  color: #fff;
-  background: var(--nf-rose);
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-family: var(--nf-mono);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity .18s, transform .18s;
-  box-shadow: 0 6px 16px -8px var(--nf-rose);
+#services a::after,
+div[class*="service"] > a::after,
+div[class*="Service"] > a::after {
+  content: "open →" !important;
+  position: absolute !important;
+  right: 14px !important;
+  bottom: 12px !important;
+  color: #fff !important;
+  background: var(--nf-rose) !important;
+  border-radius: 999px !important;
+  padding: 3px 12px !important;
+  font-family: var(--nf-mono) !important;
+  font-size: 0.55rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  opacity: 0 !important;
+  transform: translateY(5px) !important;
+  transition: opacity .18s, transform .18s !important;
+  box-shadow: 0 6px 16px -8px var(--nf-rose) !important;
+  clip-path: none !important;
+  filter: none !important;
+  width: auto !important;
+  height: auto !important;
 }
 
-/* card hover — lift */
+/* card hover */
 #services li a:hover,
-#services a:hover {
+#services a:hover,
+div[class*="service"] > a:hover,
+div[class*="Service"] > a:hover {
   background: var(--nf-paper-2) !important;
   border-color: var(--nf-rose-soft) !important;
   box-shadow:
     0 0 0 1px rgba(177, 94, 92, 0.08),
-    0 24px 48px -30px rgba(33, 28, 25, .42) !important;
+    0 24px 50px -28px rgba(33, 28, 25, .42) !important;
   transform: translateY(-3px) !important;
 }
 
 #services li a:hover::after,
-#services a:hover::after {
-  opacity: 1;
-  transform: translateY(0);
+#services a:hover::after,
+div[class*="service"] > a:hover::after,
+div[class*="Service"] > a:hover::after {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-/* service icons */
-#services img,
-#services svg {
-  filter: drop-shadow(0 4px 12px rgba(33, 28, 25, .12));
-}
-
-/* descriptions — muted text */
-#services p,
-#bookmarks p,
-[class*="description"] {
-  color: var(--nf-muted) !important;
-  font-size: 0.82rem;
-}
-
-/* service titles */
+/* ─── service title text — serif ─── */
 #services h3,
 #services [class*="service-name"],
-#services span[class*="name"] {
+#services span[class*="name"],
+div[class*="service"] h3,
+div[class*="Service"] h3,
+div[class*="service"] [class*="Name"],
+div[class*="Service"] [class*="Name"] {
   font-family: var(--nf-serif) !important;
   font-weight: 700 !important;
+  font-size: 15px !important;
   color: var(--nf-ink) !important;
 }
 
-/* info widgets — green accent border */
-#information-widgets > * {
-  border-color: rgba(95, 125, 94, 0.18) !important;
+/* ─── service description ─── */
+#services p,
+#bookmarks p,
+[class*="description"],
+[class*="Description"],
+div[class*="service"] p,
+div[class*="Service"] p {
+  color: var(--nf-muted) !important;
+  font-family: var(--nf-sans) !important;
+  font-size: 0.8rem !important;
+}
+
+/* ─── service icons ─── */
+#services img,
+#services svg,
+div[class*="service"] img,
+div[class*="Service"] img {
+  filter: drop-shadow(0 3px 8px rgba(33, 28, 25, .10)) !important;
+}
+
+/* ─── info widgets (top bar) ─── */
+#information-widgets > *,
+[class*="information"] > div {
+  border-color: rgba(95, 125, 94, 0.14) !important;
 }
 
 #information-widgets [class*="text"],
-#information-widgets span {
+#information-widgets span,
+[class*="information"] span {
   color: var(--nf-ink) !important;
+  font-family: var(--nf-sans) !important;
 }
 
-/* search input — pill */
+/* ─── resource widget text ─── */
+[class*="resource"],
+[class*="Resource"] {
+  color: var(--nf-ink) !important;
+  font-family: var(--nf-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* ─── search input ─── */
 input[type="search"],
-input[type="text"] {
+input[type="text"],
+input {
   background: var(--nf-paper) !important;
   border: 1px solid var(--nf-line) !important;
   border-radius: 999px !important;
   color: var(--nf-ink) !important;
   caret-color: var(--nf-rose) !important;
-  box-shadow: var(--nf-e-1) !important;
+  box-shadow: 0 8px 30px -18px rgba(33, 28, 25, .3), 0 1px 0 rgba(255, 255, 255, .6) inset !important;
   font-family: var(--nf-sans) !important;
 }
 
 input[type="search"]:focus,
-input[type="text"]:focus {
+input[type="text"]:focus,
+input:focus {
   border-color: var(--nf-rose-soft) !important;
   box-shadow:
     0 0 0 3px rgba(177, 94, 92, 0.12),
-    var(--nf-e-1) !important;
+    0 8px 30px -18px rgba(33, 28, 25, .3) !important;
   outline: none !important;
 }
 
 input::placeholder {
   color: var(--nf-muted-2) !important;
+  font-family: var(--nf-sans) !important;
 }
 
-/* bookmarks — hover lift */
-#bookmarks li a {
+/* ─── bookmarks ─── */
+#bookmarks li a,
+[class*="Bookmark"] a {
   transition: transform .18s, border-color .18s, box-shadow .22s !important;
 }
 
-#bookmarks li a:hover {
+#bookmarks li a:hover,
+[class*="Bookmark"] a:hover {
   border-color: var(--nf-rose-soft) !important;
   box-shadow:
     0 0 0 1px rgba(177, 94, 92, 0.06),
     0 20px 44px -30px rgba(33, 28, 25, .38) !important;
-  transform: translateY(-2px);
+  transform: translateY(-2px) !important;
 }
 
-/* status indicators */
+/* bookmark abbreviation badges */
+#bookmarks li a span[class*="abbr"],
+[class*="Bookmark"] span[class*="Abbr"],
+[class*="bookmark"] span:first-child {
+  font-family: var(--nf-mono) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ─── status dots ─── */
 [class*="bg-emerald"],
-[class*="bg-green"] {
+[class*="bg-green"],
+[class*="online"],
+[class*="Running"] {
   background-color: var(--nf-green-pop) !important;
-  box-shadow: 0 0 10px rgba(58, 158, 116, 0.5);
+  box-shadow: 0 0 10px rgba(58, 158, 116, 0.5) !important;
 }
 
 [class*="bg-red"],
-[class*="bg-rose"] {
+[class*="bg-rose"],
+[class*="offline"],
+[class*="Stopped"] {
   background-color: var(--nf-rose) !important;
-  box-shadow: 0 0 10px rgba(177, 94, 92, 0.5);
+  box-shadow: 0 0 10px rgba(177, 94, 92, 0.5) !important;
 }
 
-/* progress bars */
+/* ─── progress / resource bars ─── */
 [class*="progress"],
 [role="progressbar"] {
-  accent-color: var(--nf-rose);
+  accent-color: var(--nf-rose) !important;
 }
 
-/* responsive */
+[class*="progress"] > div,
+[role="progressbar"] > div {
+  background: linear-gradient(90deg, var(--nf-rose), var(--nf-rose-soft)) !important;
+  border-radius: 999px !important;
+}
+
+/* ─── date/time widget ─── */
+[class*="DateTime"],
+[class*="datetime"] {
+  font-family: var(--nf-serif) !important;
+  color: var(--nf-ink) !important;
+}
+
+/* ─── footer area / version ─── */
+[class*="version"],
+[class*="Version"],
+footer {
+  font-family: var(--nf-mono) !important;
+  color: var(--nf-muted-2) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* ─── settings button ─── */
+button[class*="setting"],
+button[class*="Setting"],
+[class*="theme"] button {
+  color: var(--nf-muted) !important;
+  transition: color .18s !important;
+}
+
+button[class*="setting"]:hover,
+[class*="theme"] button:hover {
+  color: var(--nf-rose) !important;
+}
+
+/* ─── responsive ─── */
 @media (max-width: 720px) {
   body::after {
     top: 16px;
@@ -323,12 +406,12 @@ input::placeholder {
 
   #services li a,
   #services a {
-    min-height: 86px;
+    min-height: 80px !important;
   }
 
   #services li a::after,
   #services a::after {
-    opacity: 1;
-    transform: none;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

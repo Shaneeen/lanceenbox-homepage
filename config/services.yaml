@@ -1,18 +1,15 @@
 ---
-# Replace YOUR_SERVER_IP with your server's IP (e.g. 192.168.1.55 or Tailscale IP)
-# If accessing from the server itself, use localhost.
-
 - Control Room:
     - Portainer:
-        href: http://192.168.1.55:9000
+        href: http://100.91.218.22:9000
         description: Start, stop, and inspect your containers
         icon: portainer.png
-        ping: http://192.168.1.55:9000
+        ping: http://100.91.218.22:9000
     - Docker Host:
-        href: http://192.168.1.55:3000
+        href: http://100.91.218.22:3000
         description: This dashboard — your server's home screen
         icon: docker.png
-        ping: http://192.168.1.55:3000
+        ping: http://100.91.218.22:3000
 
 - Network & Access:
     - Tailscale:
@@ -22,10 +19,10 @@
 
 - Files & Projects:
     - File Browser:
-        href: http://192.168.1.55:8080
+        href: http://100.91.218.22:8080
         description: Browse and manage server files from the web
         icon: filebrowser.png
-        ping: http://192.168.1.55:8080
+        ping: http://100.91.218.22:8080
     - GitHub Projects:
         href: https://github.com/Shaneeen
         description: Code, configs, and homelab repos
@@ -33,15 +30,15 @@
 
 - Health Checks:
     - Uptime Kuma:
-        href: http://192.168.1.55:3001
+        href: http://100.91.218.22:3001
         description: Monitor uptime, latency, and get alerts
         icon: uptime-kuma.png
-        ping: http://192.168.1.55:3001
+        ping: http://100.91.218.22:3001
     - Server Status:
-        href: http://192.168.1.55:3000
+        href: http://100.91.218.22:3000
         description: CPU, memory, disk, and quick search
         icon: mdi-server
-        ping: http://192.168.1.55:3000
+        ping: http://100.91.218.22:3000
 
 - Launch Pad:
     - Future App:
